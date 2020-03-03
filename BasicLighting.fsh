@@ -62,6 +62,8 @@ uniform sampler2D specularTex;
 // Normal map
 uniform sampler2D normalTex;
 
+uniform int normalMappingEnable;
+
 void main() {
 	// Get the diffuse color from the diffuse map at the given UV coordinates
 	vec3 diffuseColor = texture(diffuseTex, outUV).rgb;
@@ -69,10 +71,12 @@ void main() {
 	// Get the specular color from the specular map at the given UV coordinates
 	vec3 specularColor = texture(specularTex, outUV).rgb;
 
-	// vec3 normal = normalize(outNormal);
-	vec3 normal = texture(normalTex, outUV).rgb;
-	normal = normalize(normal * 2.0 - 1.0);
-	// normal = normalize(TBN * normal);
+	vec3 normal = normalize(outNormal);
+	if (normalMappingEnable == 1) {
+		normal = texture(normalTex, outUV).rgb;
+		normal = normalize(normal * 2.0 - 1.0);
+		// normal = normalize(TBN * normal);
+	} 
 
 	vec3 viewDir = normalize(eyePos - fragPos);
 

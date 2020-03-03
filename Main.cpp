@@ -16,6 +16,7 @@
 #include "stb_image.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 const unsigned int windowWidth = 640;
 const unsigned int windowHeight = 480;
@@ -26,6 +27,7 @@ float pitch = 0.0f;
 float lastX = (float)windowWidth / 2.0;
 float lastY = (float)windowHeight / 2.0;
 float fov = 45.0f;
+bool normalMappingEnable = true;
 
 // Struct containing vertex info
 struct Vertex
@@ -77,6 +79,7 @@ int main()
 		return -1;
 	}
 
+	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
@@ -473,6 +476,8 @@ int main()
 			glUniform1i(glGetUniformLocation(cubeProgram, "specularTex"), 1);
 
 			glUniform1i(glGetUniformLocation(cubeProgram, "normalTex"), 2);
+
+			glUniform1i(glGetUniformLocation(cubeProgram, "normalMappingEnable"), (normalMappingEnable ? 1 : 0));
 			
 			glUniformMatrix4fv(glGetUniformLocation(cubeProgram, "modelMatrix"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
 			glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -551,4 +556,10 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	direction.y = sin(glm::radians(pitch));
 	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
 	lookDir = glm::normalize(direction);
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
+		normalMappingEnable = !normalMappingEnable;
 }
