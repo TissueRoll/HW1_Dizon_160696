@@ -132,12 +132,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glfw-3.3.2.bin.WIN64\include;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glm;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Chris Dizon\Documents\OpenGL Projects\HW1\Libraries\glm;C:\Users\Chris Dizon\Documents\OpenGL Projects\HW1\Libraries\glfw-3.3.2.bin.WIN64\include;C:\Users\Chris Dizon\Documents\OpenGL Projects\HW1\Libraries\glad\include;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glfw-3.3.2.bin.WIN64\include;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glm;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glfw-3.3.2.bin.WIN64\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Chris Dizon\Documents\OpenGL Projects\HW1\Libraries\glfw-3.3.2.bin.WIN64\lib-vc2019;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glfw-3.3.2.bin.WIN64\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -169,14 +169,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glfw-3.3.2.bin.WIN64\include;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glm;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Chris Dizon\Documents\OpenGL Projects\HW1\Libraries\glm;C:\Users\Chris Dizon\Documents\OpenGL Projects\HW1\Libraries\glfw-3.3.2.bin.WIN64\include;C:\Users\Chris Dizon\Documents\OpenGL Projects\HW1\Libraries\glad\include;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glfw-3.3.2.bin.WIN64\include;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glm;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glfw-3.3.2.bin.WIN64\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Chris Dizon\Documents\OpenGL Projects\HW1\Libraries\glfw-3.3.2.bin.WIN64\lib-vc2019;C:\Users\Chris\Documents\OpenGL Projects\HW1_Dizon_160696\Libraries\glfw-3.3.2.bin.WIN64\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
