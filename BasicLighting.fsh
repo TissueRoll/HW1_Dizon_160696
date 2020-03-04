@@ -75,7 +75,7 @@ void main() {
 	if (normalMappingEnable == 1) {
 		normal = texture(normalTex, outUV).rgb;
 		normal = normalize(normal * 2.0 - 1.0);
-		// normal = normalize(TBN * normal);
+		normal = normalize(TBN * normal);
 	} 
 
 	vec3 viewDir = normalize(eyePos - fragPos);

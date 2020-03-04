@@ -155,26 +155,28 @@ int main()
 	// make the tangent and bitangent vectors
 	for (int i = 0; i < 36; i += 3) {
 		Vertex p0 = cubeVertices[cubeIndices[i]];
-		Vertex p1 = cubeVertices[cubeIndices[i]];
-		Vertex p2 = cubeVertices[cubeIndices[i]];
+		Vertex p1 = cubeVertices[cubeIndices[i+1]];
+		Vertex p2 = cubeVertices[cubeIndices[i+2]];
 		glm::vec3 e1 = p1 - p0;
 		glm::vec3 e2 = p2 - p0;
 		float dU1 = p1.u - p0.u;
 		float dU2 = p2.u - p0.u;
 		float dV1 = p1.v - p0.v;
 		float dV2 = p2.v - p0.v;
-		float c = 1.f / (dU1 * dV2 - dU2 * dV1);
-		glm::mat2x3 TB = c * glm::mat2x3(e1, e2) * glm::mat2(dV2, -dV1, -dU2, dU1);
+		float c = 1.0f / (dU1 * dV2 - dU2 * dV1);
+		glm::mat2x3 TB = glm::mat2x3(e1, e2) * glm::mat2(dV2, -dV1, -dU2, dU1) * c;
 		glm::vec3 tangent(TB[0][0],TB[0][1],TB[0][2]);
 		tangent = glm::normalize(tangent);
 		glm::vec3 bitangent(TB[1][0], TB[1][1], TB[1][2]);
 		bitangent = glm::normalize(bitangent);
-		cubeVertices[cubeIndices[i]].tx = tangent.x;
-		cubeVertices[cubeIndices[i]].ty = tangent.y;
-		cubeVertices[cubeIndices[i]].tz = tangent.z;
-		cubeVertices[cubeIndices[i]].btx = bitangent.x;
-		cubeVertices[cubeIndices[i]].bty = bitangent.y;
-		cubeVertices[cubeIndices[i]].btz = bitangent.z;
+		for (int j = 0; j < 3; j++) {
+			cubeVertices[cubeIndices[i + j]].tx = tangent.x;
+			cubeVertices[cubeIndices[i + j]].ty = tangent.y;
+			cubeVertices[cubeIndices[i + j]].tz = tangent.z;
+			cubeVertices[cubeIndices[i + j]].btx = bitangent.x;
+			cubeVertices[cubeIndices[i + j]].bty = bitangent.y;
+			cubeVertices[cubeIndices[i + j]].btz = bitangent.z;
+		}
 	}
 
 	// Enable depth testing to handle occlusion
