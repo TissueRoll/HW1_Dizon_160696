@@ -326,6 +326,8 @@ int main()
 
 	// Cube positions
 	std::vector<glm::vec3> cubePositions;
+	cubePositions.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
+	/*
 	cubePositions.push_back(glm::vec3(2.0f, 5.0f, -15.0f));
 	cubePositions.push_back(glm::vec3(-1.5f, -2.2f, -2.5f));
 	cubePositions.push_back(glm::vec3(-3.8f, -2.0f, -12.3f));
@@ -335,7 +337,7 @@ int main()
 	cubePositions.push_back(glm::vec3(1.5f, 2.0f, -2.5f));
 	cubePositions.push_back(glm::vec3(1.5f, 0.2f, -1.5f));
 	cubePositions.push_back(glm::vec3(-1.3f, 1.0f, -1.5f));
-
+	*/
 	double prevTime = glfwGetTime();
 	while (!glfwWindowShouldClose(window)) {
 		// Calculate amount of time passed since the last frame
@@ -412,7 +414,8 @@ int main()
 		glUniform3f(glGetUniformLocation(cubeProgram, "eyePos"), eyePosition.x, eyePosition.y, eyePosition.z);
 
 		// Pass directional light parameters to the shader
-		glUniform3fv(glGetUniformLocation(cubeProgram, "dirLight.direction"), 1, glm::value_ptr(glm::vec3(0.0f, -1.0f, 0.0f)));
+		// glUniform3fv(glGetUniformLocation(cubeProgram, "dirLight.direction"), 1, glm::value_ptr(glm::vec3(0.0f, -1.0f, 0.0f)));
+		glUniform3fv(glGetUniformLocation(cubeProgram, "dirLight.direction"), 1, glm::value_ptr(lookDir));
 		glUniform3fv(glGetUniformLocation(cubeProgram, "dirLight.ambient"), 1, glm::value_ptr(glm::vec3(0.05f, 0.05f, 0.05f)));
 		glUniform3fv(glGetUniformLocation(cubeProgram, "dirLight.diffuse"), 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 1.0f)));
 		glUniform3fv(glGetUniformLocation(cubeProgram, "dirLight.specular"), 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 1.0f)));
@@ -429,11 +432,15 @@ int main()
 		// Pass spot light parameters to the shader
 		// We pass the camera position and direction as the spot light position and direction respectively
 		// to emulate a flash light
+		glm::vec3 temp(0.0f, 0.0f, 0.0f);
 		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.position"), 1, glm::value_ptr(eyePosition));
 		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.direction"), 1, glm::value_ptr(lookDir));
-		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.ambient"), 1, glm::value_ptr(glm::vec3(0.1f, 0.1f, 0.1f)));
-		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.diffuse"), 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 1.0f)));
-		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.specular"), 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 1.0f)));
+		// glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.ambient"), 1, glm::value_ptr(glm::vec3(0.1f, 0.1f, 0.1f)));
+		// glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.diffuse"), 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 1.0f)));
+		// glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.specular"), 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 1.0f)));
+		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.ambient"), 1, glm::value_ptr(temp));
+		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.diffuse"), 1, glm::value_ptr(temp));
+		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.specular"), 1, glm::value_ptr(temp));
 		glUniform1f(glGetUniformLocation(cubeProgram, "spotLight.kConstant"), 1.0f);
 		glUniform1f(glGetUniformLocation(cubeProgram, "spotLight.kLinear"), 0.09f);
 		glUniform1f(glGetUniformLocation(cubeProgram, "spotLight.kQuadratic"), 0.032f);
@@ -485,6 +492,7 @@ int main()
 			glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 		}
 
+		/*
 		// --- Render a cube where the point light is for visualization purposes
 
 		// Switch to the shader for the light source
@@ -512,6 +520,7 @@ int main()
 		
 		// Draw the cube for the light source
 		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+		*/
 
 		// Swap the front and back buffers
 		glfwSwapBuffers(window);
