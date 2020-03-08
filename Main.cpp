@@ -283,7 +283,7 @@ int main()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 	int normalWidth, normalHeight, normalNumChannels;
-	unsigned char* normalData = stbi_load("container-normal.png", &normalWidth, &normalHeight, &normalNumChannels, 0);
+	unsigned char* normalData = stbi_load("container-normal2.png", &normalWidth, &normalHeight, &normalNumChannels, 0);
 
 	// Upload the normal map data
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, normalWidth, normalHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, normalData);
@@ -327,7 +327,6 @@ int main()
 	// Cube positions
 	std::vector<glm::vec3> cubePositions;
 	cubePositions.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
-	/*
 	cubePositions.push_back(glm::vec3(2.0f, 5.0f, -15.0f));
 	cubePositions.push_back(glm::vec3(-1.5f, -2.2f, -2.5f));
 	cubePositions.push_back(glm::vec3(-3.8f, -2.0f, -12.3f));
@@ -337,7 +336,7 @@ int main()
 	cubePositions.push_back(glm::vec3(1.5f, 2.0f, -2.5f));
 	cubePositions.push_back(glm::vec3(1.5f, 0.2f, -1.5f));
 	cubePositions.push_back(glm::vec3(-1.3f, 1.0f, -1.5f));
-	*/
+	// */
 	double prevTime = glfwGetTime();
 	while (!glfwWindowShouldClose(window)) {
 		// Calculate amount of time passed since the last frame
@@ -435,12 +434,12 @@ int main()
 		glm::vec3 temp(0.0f, 0.0f, 0.0f);
 		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.position"), 1, glm::value_ptr(eyePosition));
 		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.direction"), 1, glm::value_ptr(lookDir));
-		// glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.ambient"), 1, glm::value_ptr(glm::vec3(0.1f, 0.1f, 0.1f)));
-		// glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.diffuse"), 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 1.0f)));
-		// glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.specular"), 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 1.0f)));
-		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.ambient"), 1, glm::value_ptr(temp));
-		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.diffuse"), 1, glm::value_ptr(temp));
-		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.specular"), 1, glm::value_ptr(temp));
+		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.ambient"), 1, glm::value_ptr(glm::vec3(0.1f, 0.1f, 0.1f)));
+		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.diffuse"), 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 1.0f)));
+		glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.specular"), 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 1.0f)));
+		// glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.ambient"), 1, glm::value_ptr(temp));
+		// glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.diffuse"), 1, glm::value_ptr(temp));
+		// glUniform3fv(glGetUniformLocation(cubeProgram, "spotLight.specular"), 1, glm::value_ptr(temp));
 		glUniform1f(glGetUniformLocation(cubeProgram, "spotLight.kConstant"), 1.0f);
 		glUniform1f(glGetUniformLocation(cubeProgram, "spotLight.kLinear"), 0.09f);
 		glUniform1f(glGetUniformLocation(cubeProgram, "spotLight.kQuadratic"), 0.032f);
